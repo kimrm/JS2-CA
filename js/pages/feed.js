@@ -1,13 +1,12 @@
 import { posts, follow, unfollow, react } from "../utils/API/api.js";
 import { isFollowing } from "../utils/auth/user.js";
-import "../components/post/post.mjs";
 import postComponent from "../components/posts/post.mjs";
 
 function createObserver(element) {
   const options = {
-    root: null, // Use the viewport as the root
-    rootMargin: "0px", // No margin
-    threshold: 0.1, // 50% visibility required to trigger callback
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
   };
 
   const observer = new IntersectionObserver(handleIntersection, options);

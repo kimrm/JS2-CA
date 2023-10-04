@@ -6,6 +6,7 @@ export default function post(key, post) {
   const html = `
   <div id="container_${key}" class="col">        
   </div>
+  <div class="mt-2"><button class="btn btn-outline-info rounded w-100">Read more and comment</button></div>
     `;
   const template = document.createElement("template");
   template.innerHTML = html;

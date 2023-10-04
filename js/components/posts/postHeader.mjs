@@ -1,4 +1,4 @@
-import followActionButton from "../profile/followActionButton.mjs";
+import followActionButton from "../profile/followButton.mjs";
 import { timeAgo } from "../../utils/date.js";
 
 export default function postHeader(
