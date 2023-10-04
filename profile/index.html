@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Social/app</title>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <meta name="description" content="A social network for developers" />
+    <script src="../js/main.js" type="module"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fs-3" href="/feed">Social/app</a>
+
+        <form class="col-sm-6 ms-3" action="">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarToggler"
+          aria-controls="navbarToggler"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarToggler"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/profile"
+                role="button"
+              >
+                <div class="d-flex align-center">
+                  <div class="profile-icon-container">
+                    <img
+                      class="object-fit-cover rounded w-100 h-100"
+                      src="../../assets/images/profile-1.jpg"
+                      alt="Profile picture icon"
+                    />
+                  </div>
+                  <span class="ms-2">Profile</span>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/feed" class="nav-link">Feed</a>
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container profile-banner position-relative mt-4">
+        <img
+          class="w-100 h-100 object-fit-cover rounded top-0 left-0 z-0"
+          src="../../assets/images/banner_placeholder.png"
+          alt=""
+        />
+        <h1
+          class="display-1 position-absolute z-1 top-0 m-2 text-light shadow bg-dark p-2 rounded"
+        >
+          AlexaCoders
+        </h1>
+      </div>
+      <div class="container mt-3">
+        <div class="col p-3">
+          <div class="d-flex mb-1">
+            <div class="profile-icon-container">
+              <img
+                class="object-fit-cover rounded w-100 h-100"
+                src="../../assets/images/profile-1.jpg"
+              />
+            </div>
+            <div class="px-3"><strong>AlexaCoders</strong></div>
+          </div>
+        </div>
+        <p class="d-inline-flex gap-3 mt-3">
+          <a
+            class="btn btn-outline-primary"
+            data-bs-toggle="collapse"
+            href="#collapseForm"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseForm"
+          >
+            Edit profile
+          </a>
+          <button class="btn btn-primary">
+            <i class="bi bi-heart-fill"></i> Follow
+          </button>
+        </p>
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#followersMenu"
+          aria-controls="followersMenu"
+        >
+          Followers
+        </button>
+
+        <div
+          class="offcanvas offcanvas-start"
+          data-bs-scroll="true"
+          tabindex="-1"
+          id="followersMenu"
+          aria-labelledby="followersMenuLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="followersMenuLabel">
+              People following <strong>AlexaCoders</strong>
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <div class="row my-1 py-3 bg-light rounded">
+              <div class="col">
+                <div class="d-flex justify-content-between mb-1">
+                  <div class="d-flex">
+                    <div class="profile-icon-container">
+                      <img
+                        class="object-fit-cover rounded w-100 h-100"
+                        src="../../assets/images/profile-2.jpg"
+                      />
+                    </div>
+                    <div class="px-3">
+                      <div><strong>JavaJill </strong> 3 hrs.</div>
+                      <div>Web developer</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-heart-fill"></i> Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row my-1 py-3 bg-light rounded">
+              <div class="col">
+                <div class="d-flex justify-content-between mb-1">
+                  <div class="d-flex">
+                    <div class="profile-icon-container">
+                      <img
+                        class="object-fit-cover rounded w-100 h-100"
+                        src="../../assets/images/profile-3.jpg"
+                      />
+                    </div>
+                    <div class="px-3">
+                      <div><strong>JavaJill </strong> 3 hrs.</div>
+                      <div>Web developer</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-heart-fill"></i> Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row my-1 py-3 bg-light rounded">
+              <div class="col">
+                <div class="d-flex justify-content-between mb-1">
+                  <div class="d-flex">
+                    <div class="profile-icon-container">
+                      <img
+                        class="object-fit-cover rounded w-100 h-100"
+                        src="../../assets/images/profile-4.jpg"
+                      />
+                    </div>
+                    <div class="px-3">
+                      <div><strong>JavaJill </strong> 3 hrs.</div>
+                      <div>Web developer</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-heart-fill"></i> Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row my-1 py-3 bg-light rounded">
+              <div class="col">
+                <div class="d-flex justify-content-between mb-1">
+                  <div class="d-flex">
+                    <div class="profile-icon-container">
+                      <img
+                        class="object-fit-cover rounded w-100 h-100"
+                        src="../../assets/images/profile-2.jpg"
+                      />
+                    </div>
+                    <div class="px-3">
+                      <div><strong>JavaJill </strong> 3 hrs.</div>
+                      <div>Web developer</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-heart-fill"></i> Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row my-1 py-3 bg-light rounded">
+              <div class="col">
+                <div class="d-flex justify-content-between mb-1">
+                  <div class="d-flex">
+                    <div class="profile-icon-container">
+                      <img
+                        class="object-fit-cover rounded w-100 h-100"
+                        src="../../assets/images/profile-2.jpg"
+                      />
+                    </div>
+                    <div class="px-3">
+                      <div><strong>JavaJill </strong> 3 hrs.</div>
+                      <div>Web developer</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-heart-fill"></i> Follow
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="collapse" id="collapseForm">
+          <div class="card card-body">
+            <form action="">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  value="AlexaCoders"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea
+                  class="form-control"
+                  id="bio"
+                  name="bio"
+                  rows="3"
+                  placeholder="Tell us about yourself..."
+                >
+I'm a web developer and I love to code. I currently work at a tech startup in San Francisco. Enjoying my time here with my pug and 11 cats.
+#nodejs #bootstrap
+                </textarea>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div>Profile picture:</div>
+                  <img
+                    class="image-fluid w-100"
+                    src="../../assets/images/profile-1.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="my-3">
+                  <button class="btn btn-outline-primary">
+                    Upload new picture
+                  </button>
+                </div>
+              </div>
+              <div class="my-5">
+                <button class="btn btn-primary">Submit changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="posts" class="container mt-3">
+          <!-- -->
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

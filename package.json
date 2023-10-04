@@ -1,0 +1,20 @@
+{
+  "name": "Social app",
+  "version": "0.0.1",
+  "description": "Social App Javascript Course Assignment",
+  "scripts": {
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server --browser=CHROME",
+    "doc": "jsdoc"
+  },
+  "author": "Kim Møller <kim@kimrune.dev>",
+  "dependencies": {
+    "bootstrap": "^5.3.1",
+    "bootstrap-icons": "^1.10.5"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2",
+    "live-server": "^1.2.2",
+    "sass": "^1.66.1"
+  }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A social network for developers" />
+    <title>Feed | Social/app</title>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <script src="../js/main.js" type="module"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fs-3" href="/feed">Social/app</a>
+
+        <form class="col-sm-6 ms-3" action="">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </form>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarToggler"
+          aria-controls="navbarToggler"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarToggler"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/profile" role="button">
+                <div class="d-flex align-center">
+                  <div class="profile-icon-container">
+                    <img
+                      class="object-fit-cover rounded w-100 h-100"
+                      src="../../assets/images/profile-1.jpg"
+                      alt="Profile picture icon"
+                    />
+                  </div>
+                  <span class="ms-2">Profile</span>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/feed" class="nav-link active" aria-current="page"
+                >Feed</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/" class="nav-link">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="container mt-4">
+        <div class="p-4 bg-light rounded">
+          <form action="">
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                id="post"
+                name="post"
+                rows="3"
+                placeholder="Tell us about your day..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="#" class="btn btn-outline-primary">Upload media</a>
+          </form>
+        </div>
+      </div>
+
+      <div class="container mt-5 mb-2">
+        <input
+          type="radio"
+          class="btn-check"
+          name="sort-check"
+          id="desc"
+          autocomplete="off"
+          checked
+        />
+        <label class="btn btn-outline-tertiary" for="desc"
+          ><i class="bi bi-sort-down"></i
+        ></label>
+
+        <input
+          type="radio"
+          class="btn-check"
+          name="sort-check"
+          id="asc"
+          autocomplete="off"
+        />
+        <label class="btn btn-outline-tertiary" for="asc"
+          ><i class="bi bi-sort-up"></i
+        ></label>
+      </div>
+
+      <div id="posts" class="container">
+        <!-- -->
+      </div>
+    </main>
+  </body>
+</html>
