@@ -8,15 +8,16 @@ export default function postComment(
   showReplyButton
 ) {
   const html = `
-        <div id="comment_${key}" class="p-2 bg-body rounded mt-2">                            
-        </div>        
+        <div id="comment_${key}"">                            
+        </div>     
+        <div class="mt-2"><a class="btn" href="#"><i class="bi bi-reply"></i> Reply</a></div>   
         `;
   const template = document.createElement("template");
   template.innerHTML = html;
   const container = template.content.cloneNode(true);
 
   const div = document.createElement("div");
-  div.classList.add("ms-3", "mt-3");
+  div.classList.add("ms-3", "mt-3", "p-2", "bg-body", "rounded");
 
   const commentContainer = container.querySelector(`#comment_${key}`);
 
