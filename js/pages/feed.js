@@ -1,6 +1,7 @@
 import { posts, follow, unfollow, react } from "../utils/API/api.js";
 import { isFollowing } from "../utils/auth/user.js";
 import postComponent from "../components/posts/post.mjs";
+import createPost from "../components/posts/createPost.mjs";
 
 function createObserver(element) {
   const options = {
@@ -45,6 +46,13 @@ function loadPosts() {
   nextOffset += 10;
 }
 
+function addPostCreationForm() {
+  const container = document.querySelector("#createPostContainer");
+  const postElement = createPost();
+  container.append(postElement);
+}
+
 export function main() {
   loadPosts();
+  addPostCreationForm();
 }

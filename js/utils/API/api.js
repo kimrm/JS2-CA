@@ -59,6 +59,10 @@ export async function profile(username, { accessToken }) {
   );
 }
 
+export async function createPost(postData, { accessToken }) {
+  return await call(POSTS_URL, "POST", postData, accessToken);
+}
+
 export async function posts({ accessToken }, limit = 10, offset = 0) {
   return await call(
     `${POSTS_URL}?_author=true&_comments=true&_reactions=true&limit=${limit}&offset=${offset}`,
