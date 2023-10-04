@@ -1,7 +1,7 @@
 export default function postMedia(media) {
   const html = `
       <div class="my-3">
-        <img class="img-fluid w-75 d-none" src="${media}" />
+        <img class="img-fluid w-75 fadeable" src="${media}" />
       </div>
     `;
 
@@ -12,7 +12,7 @@ export default function postMedia(media) {
 
   const img = container.querySelector("img");
   img.addEventListener("load", () => {
-    img.classList.remove("d-none");
+    img.classList.add("fade-in");
   });
 
   return container;
