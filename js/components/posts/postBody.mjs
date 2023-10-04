@@ -1,7 +1,10 @@
 import postMedia from "./postMedia.mjs";
 import reactionButton from "./reactionButton.mjs";
 
-export default function postBody(key, { title, body, media, _count }) {
+export default function postBody(
+  key,
+  { title, body, media, reactions, _count }
+) {
   const html = `
     <div id="container" class="mb-3">
         <h2 id="postTitle_${key}" class="fs-5 my-2"></h2>
@@ -33,7 +36,7 @@ export default function postBody(key, { title, body, media, _count }) {
     `#reaction_buttons_${key}`
   );
 
-  const reactionButtonComponent = reactionButton(_count.reactions);
+  const reactionButtonComponent = reactionButton(reactions);
   reactionButtonsElement.append(reactionButtonComponent);
 
   return container;

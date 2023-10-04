@@ -1,4 +1,4 @@
-export default function reactionButton(reactionsCount) {
+export default function reactionButton(reactions) {
   const html = `
       <div class="dropdown">
       <button class="me-3 btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -6,7 +6,7 @@ export default function reactionButton(reactionsCount) {
           <span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>
           <span class="me-n2 z-2 bg-light rounded-circle px-1 shadow-sm">😂</span>
           <span class="bg-light shadow-sm rounded-circle px-1">❤️</span>
-          <span class="ms-2">${reactionsCount}</span>
+          <span class="ms-2">${reactions.length}</span>
         </div>
       </button>
       <ul class="dropdown-menu">
