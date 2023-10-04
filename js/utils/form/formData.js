@@ -32,3 +32,7 @@ export function getRegisterData(form) {
     ...{ avatar: "", banner: "" },
   };
 }
+
+export function getPostData(form) {
+  return getData(form);
+}
