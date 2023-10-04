@@ -1,6 +1,5 @@
 import { posts, follow, unfollow, react } from "../utils/API/api.js";
 import { isFollowing } from "../utils/auth/user.js";
-import "../components/post/post.mjs";
 import postComponent from "../components/posts/post.mjs";
 
 function createObserver(element) {
