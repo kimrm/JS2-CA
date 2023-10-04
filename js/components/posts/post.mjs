@@ -2,11 +2,10 @@ import postHeader from "./postHeader.mjs";
 import postBody from "./postBody.mjs";
 import postComment from "./postComment.mjs";
 
-export default function post(key, post) {
+export default function post(key, post, showAllComments = false) {
   const html = `
   <div id="container_${key}" class="col">        
   </div>
-  <div class="mt-2"><button class="btn btn-outline-info rounded w-100">Read more and comment</button></div>
     `;
   const template = document.createElement("template");
   template.innerHTML = html;
@@ -24,7 +23,7 @@ export default function post(key, post) {
   const postBodyElement = postBody(key, post);
   elementContainer.append(postBodyElement);
 
-  if (post.comments.length > 0) {
+  if (showAllComments === false && post.comments.length > 0) {
     const firstComment = post.comments[0];
     const commentElement = postComment(0, firstComment, false, false);
     elementContainer.append(commentElement);
@@ -32,19 +31,26 @@ export default function post(key, post) {
     commentCountElement.classList.add("text-body-tertiary", "mt-3", "ms-3");
     commentCountElement.textContent = `+ ${post.comments.length - 1} comments`;
     elementContainer.append(commentCountElement);
+  } else {
+    post.comments.forEach((comment, index) => {
+      let repliedToAuthor = null;
+      if (comment.replyToId) {
+        const repliedToComment = post.comments.find(
+          (c) => c.id === comment.replyToId
+        );
+        repliedToAuthor = repliedToComment.owner;
+      }
+      const commentElement = postComment(index, comment, repliedToAuthor);
+      elementContainer.append(commentElement);
+    });
   }
 
-  // post.comments.forEach((comment, index) => {
-  //   let repliedToAuthor = null;
-  //   if (comment.replyToId) {
-  //     const repliedToComment = post.comments.find(
-  //       (c) => c.id === comment.replyToId
-  //     );
-  //     repliedToAuthor = repliedToComment.owner;
-  //   }
-  //   const commentElement = postComment(index, comment, repliedToAuthor);
-  //   elementContainer.append(commentElement);
-  // });
+  if (showAllComments === false) {
+    const readMoreButton = document.createElement("button");
+    readMoreButton.classList.add("btn", "btn-outline-info", "rounded", "w-100");
+    readMoreButton.textContent = "View post and comment";
+    elementContainer.append(readMoreButton);
+  }
 
   return div;
 }

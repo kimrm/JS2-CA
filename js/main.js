@@ -8,6 +8,11 @@ import { isLoggedIn } from "./utils/auth/auth.js";
 function initializeApp() {
   const selectedModulePath = determineModulePathForCurrentPagePath();
   invokeModule(selectedModulePath);
+
+  const queryPostId = new URLSearchParams(window.location.search).get("post");
+  if (queryPostId) {
+    import("./pages/singlePost.js").then((module) => module.main(queryPostId));
+  }
 }
 
 /**

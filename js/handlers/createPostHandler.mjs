@@ -1,5 +1,6 @@
 import { getPostData } from "../utils/form/formData.js";
 import { createPost } from "../utils/API/api.js";
+import { main as singlePost } from "../pages/singlePost.js";
 
 export default function createPostHandler(e) {
   e.preventDefault();
@@ -10,6 +11,10 @@ export default function createPostHandler(e) {
   createPost(formData, {
     accessToken: JSON.parse(localStorage.getItem("userData")).accessToken,
   }).then((data) => {
-    console.log(data);
+    let newUrl =
+      window.location.origin + window.location.pathname + "?post=" + data.id;
+    window.history.replaceState({}, "", newUrl);
+    singlePost(data.id);
+    form.reset();
   });
 }
