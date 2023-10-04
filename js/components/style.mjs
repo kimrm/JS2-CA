@@ -1,1 +1,0 @@
-class Style extends HTMLElement {}
