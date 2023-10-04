@@ -1,11 +1,13 @@
 import postHeader from "./postHeader.mjs";
 import postBody from "./postBody.mjs";
 import postComment from "./postComment.mjs";
+import postCommentForm from "./postCommentForm.mjs";
 
 export default function post(key, post, showAllComments = false) {
   const html = `
   <div id="container_${key}" class="col">        
   </div>
+  <div id="commentFormContainer"></div>
     `;
   const template = document.createElement("template");
   template.innerHTML = html;
@@ -50,6 +52,19 @@ export default function post(key, post, showAllComments = false) {
     readMoreButton.classList.add("btn", "btn-outline-info", "rounded", "w-100");
     readMoreButton.textContent = "View post and comment";
     elementContainer.append(readMoreButton);
+  } else {
+    const commentFormElement = postCommentForm(post.id, (newComment) => {
+      console.log(newComment);
+      const commentElement = postComment(
+        newComment.id,
+        newComment,
+        false,
+        false
+      );
+      elementContainer.append(commentElement);
+    });
+    const commentFormContainer = div.querySelector("#commentFormContainer");
+    commentFormContainer.append(commentFormElement);
   }
 
   return div;

@@ -36,3 +36,7 @@ export function getRegisterData(form) {
 export function getPostData(form) {
   return getData(form);
 }
+
+export function getCommentData(form) {
+  return getData(form);
+}

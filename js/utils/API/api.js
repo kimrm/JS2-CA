@@ -81,6 +81,15 @@ export async function posts({ accessToken }, limit = 10, offset = 0) {
   );
 }
 
+export async function comment(postId, commentData, { accessToken }) {
+  return await call(
+    `${POSTS_URL}/${postId}/comment`,
+    "POST",
+    commentData,
+    accessToken
+  );
+}
+
 export async function usersPosts(username, { accessToken }) {
   return await call(
     `${PROFILES_URL}/${username}/posts?_author=true&_comments=true&_reactions=true`,
