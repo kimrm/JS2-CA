@@ -10,6 +10,8 @@ export default function createPostHandler(e) {
   createPost(formData, {
     accessToken: JSON.parse(localStorage.getItem("userData")).accessToken,
   }).then((data) => {
-    console.log(data);
+    let newUrl =
+      window.location.origin + window.location.pathname + "?post=" + data.id;
+    window.history.replaceState({}, "", newUrl);
   });
 }
