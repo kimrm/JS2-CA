@@ -1,9 +1,12 @@
 import followActionButton from "../profile/followButton.mjs";
 import { timeAgo } from "../../utils/date.js";
+import { loggedInProfile } from "../../utils/auth/user.js";
+import postModal from "../postModal.js";
+import updatePost from "./updatePost.mjs";
 
 export default function postHeader(
   key,
-  { author, created, isFollowingAuthor }
+  { author, created, isFollowingAuthor, id }
 ) {
   const html = `
     <div id="mainContainer_${key}" class="d-flex justify-content-between mb-1">
@@ -46,7 +49,35 @@ export default function postHeader(
         )}&background=random&size=64`;
 
   const mainContainer = container.querySelector(`#mainContainer_${key}`);
-  mainContainer.append(followActionButton(author.name, isFollowingAuthor));
+  if (loggedInProfile().name !== author.name) {
+    mainContainer.append(followActionButton(author.name, isFollowingAuthor));
+  } else {
+    const editButton = document.createElement("button");
+    editButton.classList.add("btn", "btn-sm", "btn-outline-secondary");
+    editButton.textContent = "Edit post";
+    mainContainer.append(editButton);
+    editButton.addEventListener("click", () => {
+      const viewModal = document.getElementById("viewPostModal");
+      if (viewModal) {
+        const modalInstance = bootstrap.Modal.getInstance(viewModal);
+        modalInstance.hide();
+      }
+
+      const container = document.querySelector("main");
+
+      const modal = postModal("postUpdateModal");
+
+      container.prepend(modal);
+
+      const updatePostForm = updatePost(id);
+      const modalElement = container.querySelector("#postUpdateModal");
+      modalElement.querySelector(".modal-content").appendChild(updatePostForm);
+
+      const updatePostModal = container.querySelector(".modal");
+      const updatePostModalInstance = new bootstrap.Modal(updatePostModal);
+      updatePostModalInstance.show();
+    });
+  }
 
   return container;
 }
