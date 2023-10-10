@@ -17,7 +17,7 @@ export default function postHeader(
           </a>
         </div>
         <div>
-          <a class="btn" href="/profile/?name=AUTHOR_NAME">
+          <a class="btn" href="/profile/?name=${author.name}">
             <strong id="author_name_${key}"></strong>
             <span id="date_${key}"></span>
           </a>
