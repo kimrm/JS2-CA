@@ -4,13 +4,12 @@ import reactionButton from "./reactionButton.mjs";
 export default function postBody(key, { id, title, body, media, reactions }) {
   const html = `
     <div id="container" class="mb-3">
-        <h2 id="postTitle_${key}" class="fs-5 my-2"></h2>
+        <a href="/feed/?post=${id}"><h2 id="postTitle_${key}" class="fs-5 my-2"></h2></a>
         <p id="postBody_${key}" class="mb-0"></p>
         <div id="postMedia_${key}"></div>
         <div id="reaction_buttons_${key}" class="d-flex mt-3">            
         </div>       
-    </div>     
-    
+    </div>         
     `;
 
   const template = document.createElement("template");

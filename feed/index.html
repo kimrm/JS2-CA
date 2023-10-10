@@ -13,13 +13,16 @@
       <div class="container">
         <a class="navbar-brand fs-3" href="/feed">Social/app</a>
 
-        <form class="col-sm-6 ms-3" action="">
+        <form class="col-sm-6 ms-3 d-flex" action="/feed/" method="get">
           <input
             class="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
+            name="term"
+            id="searchTermInput"
           />
+          <button class="btn btn-primary">Search</button>
         </form>
         <button
           class="navbar-toggler"
@@ -72,28 +75,48 @@
           type="radio"
           class="btn-check"
           name="sort-check"
-          id="desc"
+          id="checkNewest"
           autocomplete="off"
+          value="newest"
           checked
         />
-        <label class="btn btn-outline-tertiary" for="desc"
-          ><i class="bi bi-sort-down"></i
-        ></label>
-
+        <label class="btn btn-outline-tertiary" for="checkNewest"
+          ><i class="bi bi-sort-down"></i> Newest
+        </label>
         <input
           type="radio"
           class="btn-check"
           name="sort-check"
-          id="asc"
+          id="checkFollowing"
           autocomplete="off"
+          value="following"
         />
-        <label class="btn btn-outline-tertiary" for="asc"
-          ><i class="bi bi-sort-up"></i
-        ></label>
+        <label class="btn btn-outline-tertiary" for="checkFollowing"
+          ><i class="bi bi-sort-down"></i> Following
+        </label>
+        <input
+          type="radio"
+          class="btn-check"
+          name="sort-check"
+          id="checkActive"
+          autocomplete="off"
+          value="active"
+        />
+        <label class="btn btn-outline-tertiary" for="checkActive"
+          ><i class="bi bi-sort-up"></i> Active</label
+        >
       </div>
 
       <div id="posts" class="container">
         <!-- -->
+      </div>
+      <div id="feedLoader" class="d-flex justify-content-center p-4">
+        <div
+          id="feedLoaderSpinner"
+          class="spinner-grow text-primary"
+          role="status"
+        ></div>
+        <span id="feedLoaderText" class="p-2">Loading posts...</span>
       </div>
     </main>
   </body>
