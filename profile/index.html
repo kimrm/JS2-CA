@@ -13,15 +13,15 @@
       <div class="container">
         <a class="navbar-brand fs-3" href="/feed">Social/app</a>
 
-        <form class="col-sm-6 ms-3 d-flex" action="/feed/" method="get">
+        <form class="col-sm-6 ms-md-3 d-flex" action="/feed/" method="get">
           <input
-            class="form-control me-2"
+            class="form-control me-md-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
             name="term"
           />
-          <button class="btn btn-primary">Search</button>
+          <button class="btn btn-primary d-none d-md-block">Search</button>
         </form>
         <button
           class="navbar-toggler"
@@ -72,26 +72,27 @@
     <main>
       <div class="container profile-banner position-relative mt-4">
         <img
-          class="w-100 h-100 object-fit-cover rounded top-0 left-0 z-0"
-          src="../../assets/images/banner_placeholder.png"
+          class="w-100 h-100 object-fit-cover rounded top-0 left-0 z-0 fadeable"
           alt=""
+          id="profile-banner"
         />
         <h1
-          class="display-1 position-absolute z-1 top-0 m-2 text-light shadow bg-dark p-2 rounded"
-        >
-          AlexaCoders
-        </h1>
+          id="profile-name"
+          class="display-5 position-absolute z-1 top-0 m-2 text-light shadow bg-dark p-2 rounded fadeable"
+        ></h1>
       </div>
       <div class="container mt-3">
         <div class="col p-3">
           <div class="d-flex mb-1">
             <div class="profile-icon-container">
               <img
-                class="object-fit-cover rounded w-100 h-100"
-                src="../../assets/images/profile-1.jpg"
+                class="object-fit-cover rounded w-100 h-100 fadeable"
+                id="profile-picture"
               />
             </div>
-            <div class="px-3"><strong>AlexaCoders</strong></div>
+            <div class="px-3">
+              <strong id="profile-picture-name"></strong>
+            </div>
           </div>
         </div>
         <p class="d-inline-flex gap-3 mt-3">
@@ -296,7 +297,7 @@ I'm a web developer and I love to code. I currently work at a tech startup in Sa
             </form>
           </div>
         </div>
-        <div id="posts" class="container mt-3">
+        <div id="posts-container" class="container mt-3">
           <!-- -->
         </div>
       </div>
