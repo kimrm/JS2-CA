@@ -9,19 +9,19 @@ export function main(postId) {
     const singlePost = viewSinglePost(data);
     const container = document.querySelector("main");
 
-    const modal = postModal();
+    const modal = postModal("viewPostModal");
 
     container.prepend(modal);
 
     container.querySelector(".modal-content").appendChild(singlePost);
 
-    const modalElement = container.querySelector(".modal");
+    const modalElement = container.querySelector("#viewPostModal");
 
-    const myModal = new bootstrap.Modal(modalElement);
+    const modalInstance = new bootstrap.Modal(modalElement);
     document.addEventListener("hidden.bs.modal", (e) => {
       unsetQueryParams();
     });
-    myModal.show();
+    modalInstance.show();
   });
 
   setQueryParams(postId);
