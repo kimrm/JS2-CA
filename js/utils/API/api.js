@@ -63,6 +63,15 @@ export async function createPost(postData, { accessToken }) {
   return await call(POSTS_URL, "POST", postData, accessToken);
 }
 
+export async function updatePost(postId, postData, { accessToken }) {
+  console.log(postId, postData, accessToken);
+  return await call(`${POSTS_URL}/${postId}`, "PUT", postData, accessToken);
+}
+
+export async function deletePost(postId, { accessToken }) {
+  return await call(`${POSTS_URL}/${postId}`, "DELETE", null, accessToken);
+}
+
 export async function post(postId, { accessToken }) {
   return await call(
     `${POSTS_URL}/${postId}?_author=true&_comments=true&_reactions=true`,
