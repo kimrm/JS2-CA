@@ -44,6 +44,25 @@
   animation: fadeIn ease 1s forwards;
 }
 
+.bounce-in {
+  animation: bounceIn ease 0.5s forwards;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
