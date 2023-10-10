@@ -252,30 +252,7 @@
         </div>
         <div class="collapse" id="collapseForm">
           <div class="card card-body">
-            <form action="">
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  name="name"
-                  value="AlexaCoders"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="bio" class="form-label">Bio</label>
-                <textarea
-                  class="form-control"
-                  id="bio"
-                  name="bio"
-                  rows="3"
-                  placeholder="Tell us about yourself..."
-                >
-I'm a web developer and I love to code. I currently work at a tech startup in San Francisco. Enjoying my time here with my pug and 11 cats.
-#nodejs #bootstrap
-                </textarea>
-              </div>
+            <form id="profile-edit-form" action="">
               <div class="row">
                 <div class="col-sm-4">
                   <div>Profile picture:</div>
@@ -283,12 +260,34 @@ I'm a web developer and I love to code. I currently work at a tech startup in Sa
                     class="image-fluid w-100"
                     src="../../assets/images/profile-1.jpg"
                     alt=""
+                    id="profile-edit-avatar-preview"
                   />
                 </div>
                 <div class="my-3">
-                  <button class="btn btn-outline-primary">
-                    Upload new picture
-                  </button>
+                  <label for="profile-edit-avatar">Your avatar</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="profile-edit-avatar"
+                    name="avatar"
+                  />
+                </div>
+                <div>Banner picture:</div>
+                <img
+                  class="image-fluid w-100"
+                  src="../../assets/images/banner_placeholder.png"
+                  alt=""
+                  id="profile-edit-banner-preview"
+                />
+
+                <div class="my-3">
+                  <label for="profile-edit-avatar">Your banner</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="profile-edit-banner"
+                    name="banner"
+                  />
                 </div>
               </div>
               <div class="my-5">

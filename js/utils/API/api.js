@@ -59,6 +59,15 @@ export async function profile(username, { accessToken }) {
   );
 }
 
+export async function updateProfileMedia(username, mediaData, { accessToken }) {
+  return await call(
+    `${PROFILES_URL}/${username}/media`,
+    "PUT",
+    mediaData,
+    accessToken
+  );
+}
+
 export async function createPost(postData, { accessToken }) {
   return await call(POSTS_URL, "POST", postData, accessToken);
 }

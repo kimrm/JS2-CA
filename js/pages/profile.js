@@ -1,4 +1,4 @@
-import { usersPosts, profile } from "../utils/API/api.js";
+import { usersPosts, profile, updateProfileMedia } from "../utils/API/api.js";
 import postComponent from "../components/posts/post.mjs";
 
 export function main() {
@@ -41,6 +41,50 @@ export function main() {
       "#profile-picture-name"
     );
     profilePictureNameElement.textContent = profileData.name;
+
+    const profileEditAvatarInput = document.querySelector(
+      "#profile-edit-avatar"
+    );
+    profileEditAvatarInput.value = profileData.avatar;
+
+    profileEditAvatarInput.addEventListener("change", (e) => {
+      const profileEditAvatarPreview = document.querySelector(
+        "#profile-edit-avatar-preview"
+      );
+      profileEditAvatarPreview.src = e.target.value;
+    });
+
+    const profileEditBannerInput = document.querySelector(
+      "#profile-edit-banner"
+    );
+    profileEditBannerInput.value = profileData.banner;
+
+    profileEditBannerInput.addEventListener("change", (e) => {
+      const profileEditBannerPreview = document.querySelector(
+        "#profile-edit-banner-preview"
+      );
+      profileEditBannerPreview.src = e.target.value;
+    });
+
+    const profileEditForm = document.querySelector("#profile-edit-form");
+    profileEditForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(profileEditForm);
+      const banner = formData.get("banner");
+      const avatar = formData.get("avatar");
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      updateProfileMedia(
+        username,
+        { avatar: avatar, banner: banner },
+        userData
+      ).then((data) => {
+        console.log(data);
+      });
+      // userData.avatar = avatar;
+      // userData.banner = banner;
+      // localStorage.setItem("userData", JSON.stringify(userData));
+      // window.location.reload();
+    });
   });
 
   const postsContainer = document.querySelector("#posts-container");
