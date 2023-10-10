@@ -8,7 +8,26 @@
     <link rel="stylesheet" href="../dist/css/index.css" />
     <script src="../js/main.js" type="module"></script>
   </head>
-  <body>
+  <body class="position-relative">
+    <div
+      id="toast"
+      class="toast position-fixed bottom-0 end-0 p-3 z-index-5"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto" id="toastHeader">Social/app</strong>
+        <small id="toastTime"></small>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="toastBody">Hi!</div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand fs-3" href="/feed">Social/app</a>
