@@ -1,6 +1,6 @@
-export default function postModal() {
+export default function postModal(elementId) {
   const html = `
-    <div class="modal" tabindex="-1">
+    <div id="${elementId}" class="modal" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">     
             </div>
