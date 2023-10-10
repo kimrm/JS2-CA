@@ -2,6 +2,7 @@ import postHeader from "./postHeader.mjs";
 import postBody from "./postBody.mjs";
 import postComment from "./postComment.mjs";
 import postCommentForm from "./postCommentForm.mjs";
+import { main as singlePost } from "../../pages/singlePost.js";
 
 export default function post(key, post, showAllComments = false) {
   const html = `
@@ -52,6 +53,9 @@ export default function post(key, post, showAllComments = false) {
     readMoreButton.classList.add("btn", "btn-outline-info", "rounded", "w-100");
     readMoreButton.textContent = "View post and comment";
     elementContainer.append(readMoreButton);
+    readMoreButton.addEventListener("click", (e) => {
+      singlePost(post.id);
+    });
   } else {
     const commentFormElement = postCommentForm(post.id, (newComment) => {
       console.log(newComment);
