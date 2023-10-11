@@ -9,6 +9,10 @@ let currentSearchTerm;
 let nextOffset = 0;
 let limit = 100;
 
+/**
+ * Starting point for the feed page
+ * @returns {void}
+ */
 export function main() {
   currentSearchTerm = new URLSearchParams(window.location.search).get("term");
   const searchInput = document.querySelector("#searchTermInput");

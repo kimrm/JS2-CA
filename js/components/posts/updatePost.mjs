@@ -2,6 +2,11 @@ import updatePostHandler from "../../handlers/updatePostHandler.mjs";
 import deletePostHandler from "../../handlers/deletePostHandler.mjs";
 import { post } from "../../utils/API/api.js";
 
+/**
+ * Creates and returns a post component
+ * @param {number} id - The post id
+ * @returns HTMLDivElement
+ */
 export default function updatePost(id) {
   const html = `
   <form action="">

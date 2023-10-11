@@ -1,5 +1,11 @@
 import reactionHandler from "../../handlers/reactionHandler.mjs";
 
+/**
+ * Create the reaction button
+ * @param {string} postId The post id
+ * @param {array} reactions The reactions array
+ * @returns {Node} The reaction button
+ */
 export default function reactionButton(postId, reactions) {
   const html = `
       <div class="dropdown">

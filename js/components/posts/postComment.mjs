@@ -1,6 +1,14 @@
 import postHeader from "./postHeader.mjs";
 import { isFollowing } from "../../utils/auth/user.js";
 
+/**
+ * Creates and returns a post comment component
+ * @param {*} key
+ * @param object comment
+ * @param string replyToAuthor
+ * @param boolean showReplyButton
+ * @returns HTMLelement
+ */
 export default function postComment(
   key,
   comment,

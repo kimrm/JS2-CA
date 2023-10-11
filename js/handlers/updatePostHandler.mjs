@@ -2,6 +2,12 @@ import { getPostData } from "../utils/form/formData.js";
 import { updatePost } from "../utils/API/api.js";
 import showToastMessage from "../utils/showToastMessage.js";
 
+/**
+ * Handler for updating a post
+ * @param {number} id - The id of the post to update
+ * @param {object} e - The event object
+ * @returns {void}
+ */
 export default function updatePostHandler(id, e) {
   e.preventDefault();
 

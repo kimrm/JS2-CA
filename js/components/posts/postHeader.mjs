@@ -4,6 +4,12 @@ import { loggedInProfile } from "../../utils/auth/user.js";
 import postModal from "../postModal.js";
 import updatePost from "./updatePost.mjs";
 
+/**
+ * Creates and returns a post header component
+ * @param {*} key
+ * @param object post
+ * @returns HTMLDivElement
+ */
 export default function postHeader(
   key,
   { author, created, isFollowingAuthor, id }

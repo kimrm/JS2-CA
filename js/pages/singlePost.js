@@ -2,6 +2,11 @@ import viewSinglePost from "../components/posts/viewSinglePost.mjs";
 import { post } from "../utils/API/api.js";
 import postModal from "../components/postModal.js";
 
+/**
+ * Starting point for the single post page
+ * @param {number} postId
+ * @returns {void}
+ */
 export function main(postId) {
   const accessToken = JSON.parse(localStorage.getItem("userData")).accessToken;
 

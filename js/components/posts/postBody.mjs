@@ -2,6 +2,13 @@ import postMedia from "./postMedia.mjs";
 import reactionButton from "./reactionButton.mjs";
 import { main as singlePost } from "../../pages/singlePost.js";
 
+/**
+ * Creates and returns a post body component.
+ * @param {*} key
+ * @param object post
+ * @param boolean viewPostLinksActive - Whether or not the view post links should be active.
+ * @returns HTMLElement
+ */
 export default function postBody(
   key,
   { id, title, body, media, reactions },
