@@ -1,5 +1,6 @@
 import { usersPosts, profile, updateProfileMedia } from "../utils/API/api.js";
 import postComponent from "../components/posts/post.mjs";
+import "../components/navbar/AppNavbar.mjs";
 
 export function main() {
   const userData = JSON.parse(localStorage.getItem("userData"));
