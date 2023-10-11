@@ -1,10 +1,15 @@
 import postMedia from "./postMedia.mjs";
 import reactionButton from "./reactionButton.mjs";
+import { main as singlePost } from "../../pages/singlePost.js";
 
-export default function postBody(key, { id, title, body, media, reactions }) {
+export default function postBody(
+  key,
+  { id, title, body, media, reactions },
+  viewPostLinksActive = true
+) {
   const html = `
     <div id="container" class="mb-3">
-        <a href="/feed/?post=${id}"><h2 id="postTitle_${key}" class="fs-5 my-2"></h2></a>
+    <button id="titleButton" class="btn ps-0"><h2 id="postTitle_${key}" class="fs-5 my-2"></h2></button>
         <p id="postBody_${key}" class="mb-0"></p>
         <div id="postMedia_${key}"></div>
         <div id="reaction_buttons_${key}" class="d-flex mt-3">            
@@ -34,6 +39,12 @@ export default function postBody(key, { id, title, body, media, reactions }) {
 
   const reactionButtonComponent = reactionButton(id, reactions);
   reactionButtonsElement.append(reactionButtonComponent);
+
+  const titleButton = container.querySelector(`#titleButton`);
+  titleButton.addEventListener("click", () => {
+    if (!viewPostLinksActive) return;
+    singlePost(id);
+  });
 
   return container;
 }
