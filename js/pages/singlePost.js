@@ -19,21 +19,31 @@ export function main(postId) {
 
     const modalInstance = new bootstrap.Modal(modalElement);
     document.addEventListener("hidden.bs.modal", (e) => {
-      unsetQueryParams();
+      unsetPostQueryParams();
     });
     modalInstance.show();
   });
 
-  setQueryParams(postId);
+  setPostQueryParams(postId);
 }
 
-function setQueryParams(postId) {
-  let newUrl =
-    window.location.origin + window.location.pathname + "?post=" + postId;
+function setPostQueryParams(postId) {
+  const queryProfileName = new URLSearchParams(window.location.search).get(
+    "name"
+  );
+  const querystring = queryProfileName
+    ? `?name=${queryProfileName}&post=${postId}`
+    : `?post=${postId}`;
+
+  let newUrl = window.location.origin + window.location.pathname + querystring;
   window.history.replaceState({}, "", newUrl);
 }
 
-function unsetQueryParams() {
-  let newUrl = window.location.origin + window.location.pathname;
+function unsetPostQueryParams() {
+  const queryProfileName = new URLSearchParams(window.location.search).get(
+    "name"
+  );
+  const querystring = queryProfileName ? `?name=${queryProfileName}` : "";
+  let newUrl = window.location.origin + window.location.pathname + querystring;
   window.history.replaceState({}, "", newUrl);
 }
