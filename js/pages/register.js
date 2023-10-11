@@ -12,7 +12,7 @@ const SUCCESS_MODULE = "../components/registrationSuccess.js";
 const TOAST_MODULE = "../utils/showToastMessage.js";
 
 /**
- * Staring point for the module
+ * Staring point for the register page
  */
 export function main() {
   const registerForm = document.querySelector("#register_form");

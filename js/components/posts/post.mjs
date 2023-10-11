@@ -4,6 +4,13 @@ import postComment from "./postComment.mjs";
 import postCommentForm from "./postCommentForm.mjs";
 import { main as singlePost } from "../../pages/singlePost.js";
 
+/**
+ * Creates and returns a post component.
+ * @param {*} key - The key for the post element.
+ * @param {object} post - The post object.
+ * @param {boolean} [showAllComments] - Whether or not to show all comments or just a preview.
+ * @returns HTMLElement
+ */
 export default function post(key, post, showAllComments = false) {
   const html = `
   <div id="container_${key}" class="col">        

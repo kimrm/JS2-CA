@@ -1,5 +1,11 @@
 import followHandler from "../../handlers/followHandler.mjs";
 
+/**
+ * Create the follow button
+ * @param {string} user The user name
+ * @param {boolean} isFollowingAuthor Whether the current user is following the author or not
+ * @returns {Node} The follow button
+ */
 export default function followActionButton(user, isFollowingAuthor) {
   const html = `
     <div class="dropdown">

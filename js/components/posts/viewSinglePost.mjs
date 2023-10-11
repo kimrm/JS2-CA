@@ -1,5 +1,10 @@
 import postComponent from "./post.mjs";
 
+/**
+ * Create the post comment form
+ * @param {object} post The post object
+ * @returns {HTMLDivElement} The post comment form
+ */
 export default function viewSinglePost(post) {
   const html = `
 <div class="container">

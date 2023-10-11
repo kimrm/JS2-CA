@@ -1,3 +1,8 @@
+/**
+ * Creates and returns a image component
+ * @param string media
+ * @returns Node
+ */
 export default function postMedia(media) {
   const html = `
       <div class="my-3">

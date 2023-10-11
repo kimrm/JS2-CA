@@ -2,6 +2,10 @@ import { usersPosts, profile, updateProfileMedia } from "../utils/API/api.js";
 import postComponent from "../components/posts/post.mjs";
 import "../components/navbar/AppNavbar.mjs";
 
+/**
+ * Starting point for the profile page
+ * @returns {void}
+ */
 export function main() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const querystring = window.location.search;
@@ -81,10 +85,6 @@ export function main() {
       ).then((data) => {
         console.log(data);
       });
-      // userData.avatar = avatar;
-      // userData.banner = banner;
-      // localStorage.setItem("userData", JSON.stringify(userData));
-      // window.location.reload();
     });
   });
 

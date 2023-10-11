@@ -1,5 +1,9 @@
 import createPostHandler from "../../handlers/createPostHandler.mjs";
 
+/**
+ * Create the post creation form
+ * @returns {HTMLDivElement} The post creation form
+ */
 export default function createPost() {
   const html = `
   <form action="">

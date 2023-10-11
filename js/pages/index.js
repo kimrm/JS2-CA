@@ -14,11 +14,6 @@ export function main() {
   loginForm.addEventListener("submit", handleSubmit);
 }
 
-/**
- * Tries to log in a user
- * @param {object} data
- * @returns {Promise<object>}
- */
 async function attemptLogin(userData) {
   return await login(userData);
 }
@@ -71,7 +66,6 @@ function handleSubmit(e) {
 
     localStorage.setItem("userData", JSON.stringify(userData));
 
-    // get profile data
     profile(userData.name, userData).then((profileData) => {
       localStorage.setItem("profileData", JSON.stringify(profileData));
       window.location.href = "/profile";
