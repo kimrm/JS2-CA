@@ -23,7 +23,7 @@ export default function post(key, post, showAllComments = false) {
   const headerElement = postHeader(key, post);
   elementContainer.append(headerElement);
 
-  const postBodyElement = postBody(key, post);
+  const postBodyElement = postBody(key, post, showAllComments ? false : true);
   elementContainer.append(postBodyElement);
 
   if (showAllComments === false && post.comments.length > 0) {
