@@ -2,6 +2,7 @@ import { posts } from "../utils/API/api.js";
 import { isFollowing } from "../utils/auth/user.js";
 import postComponent from "../components/posts/post.mjs";
 import createPost from "../components/posts/createPost.mjs";
+import "../components/navbar/AppNavbar.mjs";
 
 let currentFilterBy;
 let currentSearchTerm;
