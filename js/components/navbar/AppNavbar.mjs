@@ -1,8 +1,8 @@
 import { auth } from "../../utils/auth/auth.js";
 
 /**
- * Creates and returns a navbar component
- * @description This component is used to create a navbar component.
+ * A navbar component
+ * @description A reusable navbar custom HTML element component.
  * @example
  * <app-navbar></app-navbar>
  */
