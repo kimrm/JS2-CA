@@ -10,8 +10,10 @@ export function main() {
   const userData = JSON.parse(localStorage.getItem("userData"));
   const querystring = window.location.search;
   const params = new URLSearchParams(querystring);
-  let username = params.get("name");
-  if (!username) {
+  let usernameFromQuery = params.get("name");
+  let username = usernameFromQuery;
+  if (!usernameFromQuery) {
+    document.querySelector("#editProfileButton").classList.remove("d-none");
     username = userData.name;
   }
 
