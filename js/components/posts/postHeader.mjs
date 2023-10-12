@@ -18,7 +18,7 @@ export default function postHeader(
     <div id="mainContainer_${key}" class="d-flex justify-content-between mb-1">
       <div class="d-flex">
         <div class="profile-icon-container">
-          <a href="/profile">
+          <a href="/profile/?name=${author.name}">
             <img id="avatar_${key}" class="object-fit-cover rounded w-100 h-100 fadeable">
           </a>
         </div>
