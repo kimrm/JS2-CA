@@ -9,7 +9,7 @@
     <script src="../js/main.js" type="module"></script>
   </head>
   <body>
-    <app-navbar></app-navbar>
+    <app-navbar active-link="profile"></app-navbar>
     <main>
       <div class="container profile-banner position-relative mt-4">
         <img
@@ -38,7 +38,8 @@
         </div>
         <p class="d-inline-flex gap-3 mt-3">
           <a
-            class="btn btn-outline-primary"
+            id="editProfileButton"
+            class="btn btn-outline-primary d-none"
             data-bs-toggle="collapse"
             href="#collapseForm"
             role="button"
