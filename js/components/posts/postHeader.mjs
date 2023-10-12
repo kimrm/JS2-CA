@@ -18,12 +18,16 @@ export default function postHeader(
     <div id="mainContainer_${key}" class="d-flex justify-content-between mb-1">
       <div class="d-flex">
         <div class="profile-icon-container">
-          <a href="/profile/?name=${author.name}">
+          <a href="/profile/${
+            author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
+          }">
             <img id="avatar_${key}" class="object-fit-cover rounded w-100 h-100 fadeable">
           </a>
         </div>
         <div>
-          <a class="btn" href="/profile/?name=${author.name}">
+          <a class="btn" href="/profile/${
+            author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
+          }">
             <strong id="author_name_${key}"></strong>
             <span id="date_${key}"></span>
           </a>
