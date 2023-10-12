@@ -4,9 +4,16 @@ import { auth } from "../../utils/auth/auth.js";
  * A navbar component
  * @description A reusable navbar custom HTML element component.
  * @example
- * <app-navbar></app-navbar>
+ * <app-navbar active-link="feed"></app-navbar>
  */
 class AppNavbar extends HTMLElement {
+  connectedCallback() {
+    this.activeLink = this.getAttribute("active-link");
+    if (this.activeLink) {
+      this.querySelector(`#${this.activeLink}Link`).classList.add("active");
+    }
+  }
+
   constructor() {
     super();
     const user = auth();
@@ -44,7 +51,7 @@ class AppNavbar extends HTMLElement {
         >
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/profile" role="button">
+              <a id="profileLink" class="nav-link" href="/profile" role="button">
                 <div class="d-flex align-center">
                   <div class="profile-icon-container">
                     <img
@@ -59,7 +66,7 @@ class AppNavbar extends HTMLElement {
               </a>
             </li>
             <li class="nav-item">
-              <a href="/feed" class="nav-link active" aria-current="page"
+              <a id="feedLink" href="/feed" class="nav-link" aria-current="page"
                 >Feed</a
               >
             </li>
