@@ -35,31 +35,37 @@ async function displayPosts() {
 
 async function processPosts() {
   const postsData = await getPaginatedPosts();
+
   let processedPosts = postsData;
-  if (currentSearchTerm !== null) {
-    processedPosts = await searchLogic(postsData);
-  }
-  if (currentFilterBy !== null) {
-    processedPosts = await filterLogic(processedPosts);
+  if (currentSearchTerm !== null || currentFilterBy !== null) {
+    processedPosts = await filterLogic(postsData);
   }
   nextOffset += limit;
   return processedPosts;
 }
 
-async function searchLogic(postsData) {
-  let searchedPosts = filterOnSearchTerm(postsData);
-
-  let i = 0;
+async function filterLogic(postsData) {
+  let searchedPosts = postsData;
+  if (currentSearchTerm !== null) {
+    searchedPosts = filterOnSearchTerm(searchedPosts);
+  }
+  if (currentFilterBy !== null) {
+    searchedPosts = filterOnFilterOption(searchedPosts);
+  }
   do {
-    i += 1;
-
     nextOffset += limit;
     const nextPosts = await getPaginatedPosts();
 
     if (nextPosts.length === 0) {
       break;
     }
-    const nextSearchedPosts = filterOnSearchTerm(nextPosts);
+    let nextSearchedPosts = nextPosts;
+    if (currentSearchTerm !== null) {
+      nextSearchedPosts = filterOnSearchTerm(nextSearchedPosts);
+    }
+    if (currentFilterBy !== null) {
+      nextSearchedPosts = filterOnFilterOption(nextSearchedPosts);
+    }
 
     searchedPosts = [...searchedPosts, ...nextSearchedPosts];
   } while (searchedPosts.length < limit);
@@ -175,7 +181,7 @@ async function getPaginatedPosts() {
   return postsData;
 }
 
-async function filterLogic(postsData) {
+function filterOnFilterOption(postsData) {
   let filteredPosts = [];
   switch (currentFilterBy) {
     case "newest":

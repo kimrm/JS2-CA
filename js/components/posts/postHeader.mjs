@@ -16,14 +16,18 @@ export default function postHeader(
 ) {
   const html = `
     <div id="mainContainer_${key}" class="d-flex justify-content-between mb-1">
-      <div class="d-flex">
+      <div class="d-flex flex-wrap">
         <div class="profile-icon-container">
-          <a href="/profile">
+          <a href="/profile/${
+            author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
+          }">
             <img id="avatar_${key}" class="object-fit-cover rounded w-100 h-100 fadeable">
           </a>
         </div>
         <div>
-          <a class="btn" href="/profile/?name=${author.name}">
+          <a class="btn" href="/profile/${
+            author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
+          }">
             <strong id="author_name_${key}"></strong>
             <span id="date_${key}"></span>
           </a>
@@ -40,7 +44,7 @@ export default function postHeader(
   authorNameElement.textContent = author.name;
 
   const dateElement = container.querySelector(`#date_${key}`);
-  dateElement.textContent = timeAgo(created);
+  dateElement.textContent = `, ${timeAgo(created)}`;
 
   const avatarElement = container.querySelector(`#avatar_${key}`);
   avatarElement.addEventListener("load", () => {
@@ -60,7 +64,7 @@ export default function postHeader(
   } else {
     const editButton = document.createElement("button");
     editButton.classList.add("btn", "btn-sm", "btn-outline-secondary");
-    editButton.textContent = "Edit post";
+    editButton.textContent = "Edit";
     mainContainer.append(editButton);
     editButton.addEventListener("click", () => {
       const viewModal = document.getElementById("viewPostModal");
