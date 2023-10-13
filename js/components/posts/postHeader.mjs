@@ -16,7 +16,7 @@ export default function postHeader(
 ) {
   const html = `
     <div id="mainContainer_${key}" class="d-flex justify-content-between mb-1">
-      <div class="d-flex flex-wrap">
+      <div class="d-flex">
         <div class="profile-icon-container">
           <a href="/profile/${
             author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
@@ -24,14 +24,12 @@ export default function postHeader(
             <img id="avatar_${key}" class="object-fit-cover rounded w-100 h-100 fadeable">
           </a>
         </div>
-        <div>
-          <a class="btn" href="/profile/${
-            author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
-          }">
-            <strong id="author_name_${key}"></strong>
-            <span id="date_${key}"></span>
-          </a>
-        </div>
+        <a class="btn" href="/profile/${
+          author.name !== loggedInProfile().name ? `?name=${author.name}` : ``
+        }">
+          <strong id="author_name_${key}"></strong>
+          <span id="date_${key}"></span>
+        </a>
       </div>
       
     `;
