@@ -90,7 +90,7 @@ function handleRegistrationSuccess(data) {
  */
 function handleRegistrationErrors(messageObject) {
   const parent = document.querySelector("body");
-  import("../components/errorModal.js").then((module) => {
+  import("../components/errorModal.mjs").then((module) => {
     parent.insertAdjacentHTML("beforeend", module.default(messageObject));
     const modal = new bootstrap.Modal(document.querySelector("#errorModal"));
     modal.show();

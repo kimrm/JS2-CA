@@ -1,6 +1,6 @@
 import viewSinglePost from "../components/posts/viewSinglePost.mjs";
 import { post } from "../utils/API/api.js";
-import postModal from "../components/postModal.js";
+import postModal from "../components/postModal.mjs";
 
 /**
  * Starting point for the single post page

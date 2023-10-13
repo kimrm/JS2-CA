@@ -1,7 +1,7 @@
 import followActionButton from "../profile/followButton.mjs";
 import { timeAgo } from "../../utils/date.js";
 import { loggedInProfile } from "../../utils/auth/user.js";
-import postModal from "../postModal.js";
+import postModal from "../postModal.mjs";
 import updatePost from "./updatePost.mjs";
 
 /**
