@@ -1,5 +1,24 @@
 import reactionHandler from "../../handlers/reactionHandler.mjs";
 
+function reactionsSpread(reactions) {
+  if (reactions.length === 0) {
+    return [
+      `<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>`,
+    ];
+  } else {
+    const sortedReactions = reactions.sort((a, b) => {
+      return b.count - a.count;
+    });
+    return reactions.map((reaction, index) => {
+      return `<span class="${
+        index === 0 ? `fs-3` : `fs-6`
+      } me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">${
+        reaction.symbol
+      }</span>`;
+    });
+  }
+}
+
 /**
  * Create the reaction button
  * @param {string} postId The post id
@@ -11,10 +30,13 @@ export default function reactionButton(postId, reactions) {
       <div class="dropdown">
       <button class="me-3 btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <div class="d-flex align-items-center">
-          <span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>
+          <div id="reactionsSpread" class="d-flex align-items-center">
+            ${reactionsSpread(reactions).join("")}
+          </div>          
+          <!--<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>
           <span class="me-n2 z-2 bg-light rounded-circle px-1 shadow-sm">😂</span>
-          <span class="bg-light shadow-sm rounded-circle px-1">❤️</span>
-          <span class="ms-2">${reactions.length}</span>
+          <span class="bg-light shadow-sm rounded-circle px-1">❤️</span>-->
+          <span class="ms-2">${reactions.length} reactions</span>
         </div>
       </button>
       <ul class="dropdown-menu">
