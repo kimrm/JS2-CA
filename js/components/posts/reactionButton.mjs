@@ -1,24 +1,5 @@
 import reactionHandler from "../../handlers/reactionHandler.mjs";
 
-function reactionsSpread(reactions) {
-  if (reactions.length === 0) {
-    return [
-      `<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>`,
-    ];
-  } else {
-    const sortedReactions = reactions.sort((a, b) => {
-      return b.count - a.count;
-    });
-    return reactions.map((reaction, index) => {
-      return `<span class="${
-        index === 0 ? `fs-3` : `fs-6`
-      } me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">${
-        reaction.symbol
-      }</span>`;
-    });
-  }
-}
-
 /**
  * Create the reaction button
  * @param {string} postId The post id
@@ -36,34 +17,11 @@ export default function reactionButton(postId, reactions) {
           <!--<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>
           <span class="me-n2 z-2 bg-light rounded-circle px-1 shadow-sm">😂</span>
           <span class="bg-light shadow-sm rounded-circle px-1">❤️</span>-->
-          <span class="ms-2">${reactions.length} reactions</span>
+          <span class="ms-2">${countReactions(reactions)} reactions</span>
         </div>
       </button>
       <ul class="dropdown-menu">
-        <li class="dropdown-item">
-          <button class="btn react-button">            
-            <span class="ms-2">👍</span>
-            <span class="ms-2">${
-              reactions.filter((reaction) => reaction.symbol === "👍").length
-            }</span>
-          </button>
-        </li>
-        <li class="dropdown-item">
-          <button class="btn react-button">            
-            <span class="ms-2">❤️</span>
-            <span class="ms-2">${
-              reactions.filter((reaction) => reaction.symbol === "❤️").length
-            }</span>
-          </button>
-        </li>
-        <li class="dropdown-item">
-          <button class="btn react-button">            
-            <span class="ms-2">😂</span>
-            <span class="ms-2">${
-              reactions.filter((reaction) => reaction.symbol === "😂").length
-            }</span>
-          </button>
-        </li>
+        
       </ul>      
     `;
 
@@ -71,6 +29,79 @@ export default function reactionButton(postId, reactions) {
   template.innerHTML = html;
   const container = template.content.cloneNode(true);
 
+  const restOfTheReactions = processReactions(reactions);
+
+  const defaultDropdownItems = [
+    renderReactionDropdownItem({
+      symbol: "👍",
+      count: reactions.reduce((accumulator, currentValue) => {
+        if (currentValue.symbol === "👍") {
+          return accumulator + currentValue.count;
+        }
+        return accumulator;
+      }, 0),
+    }),
+    renderReactionDropdownItem({
+      symbol: "❤️",
+      count: reactions.reduce((accumulator, currentValue) => {
+        if (currentValue.symbol === "❤️") {
+          return accumulator + currentValue.count;
+        }
+        return accumulator;
+      }, 0),
+    }),
+    renderReactionDropdownItem({
+      symbol: "😂",
+      count: reactions.reduce((accumulator, currentValue) => {
+        if (currentValue.symbol === "😂") {
+          return accumulator + currentValue.count;
+        }
+        return accumulator;
+      }, 0),
+    }),
+  ];
+
+  const dropdownMenu = container.querySelector(".dropdown-menu");
+  dropdownMenu.append(...defaultDropdownItems, ...restOfTheReactions);
+
+  const buttons = container.querySelectorAll(".react-button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      reactionHandler(postId, button.children[0].textContent, (reaction) => {
+        reactions.forEach((reaction) => {
+          if (reaction.symbol === e.target.textContent) {
+            reaction.count++;
+          }
+        });
+      });
+    });
+  });
+
+  return container;
+}
+
+function countReactions(reactions) {
+  console.log("reactions", reactions);
+  return reactions.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.count,
+    0
+  );
+}
+
+function renderReactionDropdownItem(reaction) {
+  const dropdownItem = document.createElement("li");
+  dropdownItem.classList.add("dropdown-item");
+  const button = document.createElement("button");
+  button.classList.add("btn");
+  button.innerHTML = `
+      <span class="ms-2">${reaction.symbol}</span>
+      <span class="ms-2">${reaction.count}</span>
+    `;
+  dropdownItem.append(button);
+  return dropdownItem;
+}
+
+function processReactions(reactions) {
   const filteredReactions = reactions.filter(
     (reaction) =>
       reaction.symbol !== "👍" &&
@@ -79,29 +110,28 @@ export default function reactionButton(postId, reactions) {
   );
 
   const restOfTheReactions = filteredReactions.map((reaction) => {
-    const dropdownItem = document.createElement("li");
-    dropdownItem.classList.add("dropdown-item");
-    const button = document.createElement("button");
-    button.classList.add("btn");
-    button.innerHTML = `
-      <span class="ms-2">${reaction.symbol}</span>
-      <span class="ms-2">${reaction.count}</span>
-    `;
-    dropdownItem.append(button);
+    const dropdownItem = renderReactionDropdownItem(reaction);
     return dropdownItem;
   });
 
-  const dropdownMenu = container.querySelector(".dropdown-menu");
-  dropdownMenu.append(...restOfTheReactions);
+  return restOfTheReactions;
+}
 
-  const buttons = container.querySelectorAll(".react-button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      reactionHandler(postId, button.children[0].textContent, (reactions) => {
-        console.log(reactions);
-      });
+function reactionsSpread(reactions) {
+  if (reactions.length === 0) {
+    return [
+      `<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>`,
+    ];
+  } else {
+    const sortedReactions = reactions.sort((a, b) => {
+      return b.count - a.count;
     });
-  });
-
-  return container;
+    return reactions.map((reaction, index) => {
+      return `<span class="${
+        index === 0 ? `fs-3` : `fs-6`
+      } me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">${
+        reaction.symbol
+      }</span>`;
+    });
+  }
 }
