@@ -12,6 +12,11 @@ class AppNavbar extends HTMLElement {
     if (this.activeLink) {
       this.querySelector(`#${this.activeLink}Link`).classList.add("active");
     }
+    this.querySelector("#logOutButton").addEventListener("click", () => {
+      localStorage.removeItem("userData");
+      localStorage.removeItem("profileData");
+      window.location.href = "/";
+    });
   }
 
   constructor() {
@@ -71,7 +76,7 @@ class AppNavbar extends HTMLElement {
               >
             </li>
             <li class="nav-item">
-              <a href="/" class="nav-link">Log out</a>
+              <button id="logOutButton" class="nav-link">Log out</button>
             </li>
           </ul>
         </div>

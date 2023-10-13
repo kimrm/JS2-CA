@@ -32,7 +32,7 @@ function determineModulePathForCurrentPagePath() {
       return "./pages/register.js";
     default:
       if (!isLoggedIn()) {
-        console.log("Not logged in");
+        window.location.href = "/";
         return;
       }
       return loggedInRoutes(currentPagePath);
