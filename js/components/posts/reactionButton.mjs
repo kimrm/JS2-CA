@@ -81,7 +81,6 @@ export default function reactionButton(postId, reactions) {
 }
 
 function countReactions(reactions) {
-  console.log("reactions", reactions);
   return reactions.reduce(
     (accumulator, currentValue) => accumulator + currentValue.count,
     0
