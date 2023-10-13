@@ -1,4 +1,5 @@
-import { auth } from "../../utils/auth/auth.js";
+import CustomElement from "../customElement/CustomElement.js";
+import { auth as authenticatedUser } from "../../utils/auth/auth.js";
 
 /**
  * A navbar component
@@ -6,22 +7,8 @@ import { auth } from "../../utils/auth/auth.js";
  * @example
  * <app-navbar active-link="feed"></app-navbar>
  */
-class AppNavbar extends HTMLElement {
-  connectedCallback() {
-    this.activeLink = this.getAttribute("active-link");
-    if (this.activeLink) {
-      this.querySelector(`#${this.activeLink}Link`).classList.add("active");
-    }
-    this.querySelector("#logOutButton").addEventListener("click", () => {
-      localStorage.removeItem("userData");
-      localStorage.removeItem("profileData");
-      window.location.href = "/";
-    });
-  }
-
-  constructor() {
-    super();
-    const user = auth();
+class AppNavbar extends CustomElement {
+  render() {
     this.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
@@ -61,7 +48,7 @@ class AppNavbar extends HTMLElement {
                   <div class="profile-icon-container">
                     <img
                       class="object-fit-cover rounded w-100 h-100 fadeable"
-                      src="${user.avatar}"
+                      src="${authenticatedUser().avatar}"
                       alt="Profile picture icon"
                       id="navbarProfileIcon"
                     />
@@ -89,10 +76,20 @@ class AppNavbar extends HTMLElement {
       userProfileIcon.classList.add("fade-in");
     });
     userProfileIcon.addEventListener("error", () => {
-      userProfileIcon.src = `https://ui-avatars.com/api/?name=${user.name.substring(
+      userProfileIcon.src = `https://ui-avatars.com/api/?name=${authenticatedUser().name.substring(
         0,
         5
       )}&background=random&size=64`;
+    });
+
+    this.activeLink = this.getAttribute("active-link");
+    if (this.activeLink) {
+      this.querySelector(`#${this.activeLink}Link`).classList.add("active");
+    }
+    this.querySelector("#logOutButton").addEventListener("click", () => {
+      localStorage.removeItem("userData");
+      localStorage.removeItem("profileData");
+      window.location.href = "/";
     });
   }
 }
