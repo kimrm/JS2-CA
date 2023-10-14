@@ -11,7 +11,7 @@ export default function reactionButton(postId, reactions) {
       <div class="dropdown">
       <button class="me-3 btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         <div class="d-flex align-items-center">
-          <div id="reactionsSpread" class="d-flex align-items-center">
+          <div id="reactionsSpread_${postId}" class="d-flex align-items-center">
             ${reactionsSpread(reactions).join("")}
           </div>          
           <!--<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>
@@ -22,7 +22,8 @@ export default function reactionButton(postId, reactions) {
       </button>
       <ul class="dropdown-menu">
         
-      </ul>      
+      </ul>   
+    </div>   
     `;
 
   const template = document.createElement("template");
@@ -67,12 +68,27 @@ export default function reactionButton(postId, reactions) {
   const buttons = container.querySelectorAll(".react-button");
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      reactionHandler(postId, button.children[0].textContent, (reaction) => {
-        reactions.forEach((reaction) => {
-          if (reaction.symbol === e.target.textContent) {
-            reaction.count++;
+      reactionHandler(postId, button.dataset.reaction, (reaction) => {
+        button.dataset.count = reaction.count;
+        button.dataset.reaction = reaction.symbol;
+        button.innerHTML = `
+            <span class="ms-2">${reaction.symbol}</span>
+            <span class="ms-2">${reaction.count}</span>
+          `;
+
+        reactions = reactions.map((reaction) => {
+          if (reaction.symbol === button.dataset.reaction) {
+            return {
+              symbol: reaction.symbol,
+              count: parseInt(button.dataset.count),
+            };
           }
+          return reaction;
         });
+        const reactionsSpreadElement = document.querySelector(
+          `#reactionsSpread_${postId}`
+        );
+        reactionsSpreadElement.innerHTML = reactionsSpread(reactions).join("");
       });
     });
   });
@@ -91,7 +107,9 @@ function renderReactionDropdownItem(reaction) {
   const dropdownItem = document.createElement("li");
   dropdownItem.classList.add("dropdown-item");
   const button = document.createElement("button");
-  button.classList.add("btn");
+  button.dataset.reaction = reaction.symbol;
+  button.dataset.count = reaction.count;
+  button.classList.add("btn", "react-button");
   button.innerHTML = `
       <span class="ms-2">${reaction.symbol}</span>
       <span class="ms-2">${reaction.count}</span>
@@ -117,6 +135,7 @@ function processReactions(reactions) {
 }
 
 function reactionsSpread(reactions) {
+  console.log("reactions ", reactions);
   if (reactions.length === 0) {
     return [
       `<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>`,
