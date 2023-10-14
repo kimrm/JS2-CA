@@ -135,7 +135,6 @@ function processReactions(reactions) {
 }
 
 function reactionsSpread(reactions) {
-  console.log("reactions ", reactions);
   if (reactions.length === 0) {
     return [
       `<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>`,
