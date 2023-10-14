@@ -18,7 +18,6 @@ export function main() {
   }
 
   profile(username, userData).then((profileData) => {
-    console.log(profileData);
     const bannerElement = document.querySelector("#profile-banner");
     bannerElement.addEventListener("load", () => {
       bannerElement.classList.add("fade-in");
