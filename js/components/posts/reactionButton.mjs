@@ -17,7 +17,9 @@ export default function reactionButton(postId, reactions) {
           <!--<span class="fs-5 me-n2 z-3 bg-light rounded-circle px-1 shadow-sm">👍</span>
           <span class="me-n2 z-2 bg-light rounded-circle px-1 shadow-sm">😂</span>
           <span class="bg-light shadow-sm rounded-circle px-1">❤️</span>-->
-          <span class="ms-2">${countReactions(reactions)} reactions</span>
+          <span id="spanReactionsCount_${postId}" class="ms-3">${countReactions(
+    reactions
+  )}</span>
         </div>
       </button>
       <ul class="dropdown-menu">
@@ -76,19 +78,36 @@ export default function reactionButton(postId, reactions) {
             <span class="ms-2">${reaction.count}</span>
           `;
 
-        reactions = reactions.map((reaction) => {
-          if (reaction.symbol === button.dataset.reaction) {
-            return {
-              symbol: reaction.symbol,
-              count: parseInt(button.dataset.count),
-            };
-          }
-          return reaction;
-        });
+        if (
+          reactions.filter((item) => item.symbol === reaction.symbol).length ===
+          0
+        ) {
+          console.log("pushing");
+          reactions.push({
+            symbol: reaction.symbol,
+            count: parseInt(reaction.count),
+          });
+        } else {
+          console.log("updating");
+          reactions = reactions.map((item) => {
+            if (item.symbol === button.dataset.reaction) {
+              return {
+                symbol: item.symbol,
+                count: parseInt(button.dataset.count),
+              };
+            }
+            return item;
+          });
+        }
+        console.log(reactions);
         const reactionsSpreadElement = document.querySelector(
           `#reactionsSpread_${postId}`
         );
         reactionsSpreadElement.innerHTML = reactionsSpread(reactions).join("");
+        const reactionsCountElement = document.querySelector(
+          `#spanReactionsCount_${postId}`
+        );
+        reactionsCountElement.textContent = countReactions(reactions);
       });
     });
   });
@@ -97,10 +116,9 @@ export default function reactionButton(postId, reactions) {
 }
 
 function countReactions(reactions) {
-  return reactions.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.count,
-    0
-  );
+  return reactions.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.count;
+  }, 0);
 }
 
 function renderReactionDropdownItem(reaction) {
