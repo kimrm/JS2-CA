@@ -98,7 +98,6 @@ function createFilterActions() {
   const checkboxActive = document.querySelector("#checkActive");
   checkboxNewest.addEventListener("change", (e) => {
     if (!e.target.checked) {
-      console.log("unchecked");
       return;
     }
     currentFilterBy = "newest";
@@ -114,7 +113,6 @@ function createFilterActions() {
   });
   checkboxFollowing.addEventListener("change", (e) => {
     if (!e.target.checked) {
-      console.log("unchecked");
       return;
     }
     currentFilterBy = "following";
@@ -130,7 +128,6 @@ function createFilterActions() {
   });
   checkboxActive.addEventListener("change", (e) => {
     if (!e.target.checked) {
-      console.log("unchecked");
       return;
     }
     currentFilterBy = "active";
@@ -185,15 +182,12 @@ function filterOnFilterOption(postsData) {
   let filteredPosts = [];
   switch (currentFilterBy) {
     case "newest":
-      console.log("newest");
       filteredPosts = filterNewest(postsData);
       break;
     case "following":
-      console.log("following");
       filteredPosts = filterFollowing(postsData);
       break;
     case "active":
-      console.log("Filter: active");
       filteredPosts = filterActive(postsData);
       break;
     default:

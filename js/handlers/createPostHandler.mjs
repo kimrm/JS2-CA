@@ -12,7 +12,7 @@ export default function createPostHandler(e) {
 
   const form = e.target;
   const formData = getPostData(form);
-  console.log(formData);
+
   createPost(formData, {
     accessToken: JSON.parse(localStorage.getItem("userData")).accessToken,
   }).then((data) => {

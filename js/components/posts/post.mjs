@@ -66,7 +66,6 @@ export default function post(key, post, showAllComments = false) {
     });
   } else {
     const commentFormElement = postCommentForm(post.id, (newComment) => {
-      console.log(newComment);
       const commentElement = postComment(
         newComment.id,
         newComment,
