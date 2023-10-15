@@ -22,6 +22,7 @@ export default function post(key, post, showAllComments = false) {
   const container = template.content.cloneNode(true);
 
   const div = document.createElement("div");
+  div.id = `post_container_${key}`;
   div.classList.add("row", "rounded", "mt-5", "py-3", "bg-light");
   div.appendChild(container);
 
