@@ -9,6 +9,25 @@
     <script src="../js/main.js" type="module"></script>
   </head>
   <body>
+    <div
+      id="toast"
+      class="toast position-fixed bottom-0 end-0 p-3 z-index-5"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto" id="toastHeader">Social/app</strong>
+        <small id="toastTime"></small>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="toastBody">Hi!</div>
+    </div>
     <app-navbar active-link="profile"></app-navbar>
     <main>
       <div class="container profile-banner position-relative mt-4">
