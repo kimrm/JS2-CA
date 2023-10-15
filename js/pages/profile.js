@@ -1,6 +1,7 @@
 import { usersPosts, profile, updateProfileMedia } from "../utils/API/api.js";
 import postComponent from "../components/posts/post.mjs";
 import "../components/navbar/AppNavbar.mjs";
+import showToastMessage from "../utils/showToastMessage.js";
 
 /**
  * Starting point for the profile page
@@ -73,18 +74,23 @@ export function main() {
     });
 
     const profileEditForm = document.querySelector("#profile-edit-form");
-    profileEditForm.addEventListener("submit", (e) => {
+    profileEditForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(profileEditForm);
       const banner = formData.get("banner");
       const avatar = formData.get("avatar");
       const userData = JSON.parse(localStorage.getItem("userData"));
-      updateProfileMedia(
+
+      await updateProfileMedia(
         username,
         { avatar: avatar, banner: banner },
         userData
       ).then((data) => {
-        console.log(data);
+        const toast = {
+          heading: "Profile updated",
+          body: "Your profile has been updated successfully!",
+        };
+        showToastMessage(toast);
       });
     });
   });
