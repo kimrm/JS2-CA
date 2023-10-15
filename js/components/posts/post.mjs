@@ -23,6 +23,7 @@ export default function post(key, post, showAllComments = false) {
 
   const div = document.createElement("div");
   div.classList.add("row", "rounded", "mt-5", "py-3", "bg-light");
+  div.id = `post_container_${key}`;
   div.appendChild(container);
 
   const elementContainer = div.querySelector(`#container_${key}`);
