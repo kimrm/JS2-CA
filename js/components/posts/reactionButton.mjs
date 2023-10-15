@@ -82,13 +82,11 @@ export default function reactionButton(postId, reactions) {
           reactions.filter((item) => item.symbol === reaction.symbol).length ===
           0
         ) {
-          console.log("pushing");
           reactions.push({
             symbol: reaction.symbol,
             count: parseInt(reaction.count),
           });
         } else {
-          console.log("updating");
           reactions = reactions.map((item) => {
             if (item.symbol === button.dataset.reaction) {
               return {
@@ -99,7 +97,7 @@ export default function reactionButton(postId, reactions) {
             return item;
           });
         }
-        console.log(reactions);
+
         const reactionsSpreadElement = document.querySelector(
           `#reactionsSpread_${postId}`
         );

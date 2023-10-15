@@ -13,7 +13,6 @@ export default function updatePostHandler(id, e) {
 
   const form = e.target;
   const formData = getPostData(form);
-  console.log(formData);
 
   const accessToken = JSON.parse(localStorage.getItem("userData")).accessToken;
   updatePost(id, formData, { accessToken }).then((data) => {

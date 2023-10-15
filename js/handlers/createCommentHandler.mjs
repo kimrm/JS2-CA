@@ -11,7 +11,7 @@ export default async function createCommentHandler(postId, e) {
   e.preventDefault();
   const form = e.target;
   const formData = getCommentData(form);
-  console.log(formData);
+
   const newComment = await comment(postId, formData, {
     accessToken: JSON.parse(localStorage.getItem("userData")).accessToken,
   });

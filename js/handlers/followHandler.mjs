@@ -9,7 +9,6 @@ export default function followHandler({ target, user, following, callback }) {
   const userData = auth();
   follow(user, !following, userData).then((data) => {
     if (data.errors) {
-      console.log(data.errors);
       return;
     }
     const profileData = JSON.parse(localStorage.getItem("profileData"));

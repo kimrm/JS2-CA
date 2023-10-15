@@ -23,7 +23,6 @@ export default function postCommentForm(postId, callback) {
   const form = container.querySelector("form");
   form.addEventListener("submit", (e) => {
     createCommentHandler(postId, e).then((newComment) => {
-      console.log("form ", newComment);
       callback(newComment);
     });
   });
