@@ -19,5 +19,6 @@ export default function deletePostHandler(id, e) {
       body: "Your post has been deleted successfully!",
     };
     showToastMessage(toast);
+    document.querySelector(`#post_container_${id}`).remove();
   });
 }
