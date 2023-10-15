@@ -24,6 +24,8 @@ export default function updatePostHandler(id, e) {
       heading: "Post updated",
       body: "Your post has been updated successfully!",
     };
+    document.querySelector(`#postTitle_${id}`).textContent = formData.title;
+    document.querySelector(`#postBody_${id}`).textContent = formData.body;
     showToastMessage(toast);
   });
 }
