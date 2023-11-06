@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A social network for developers" />
+    <title>Social/app</title>
+    <link rel="stylesheet" href="./dist/css/index.css" />
+    <script src="./js/main.js?v1" type="module"></script>
+  </head>
+  <body>
+    <div
+      id="toast"
+      class="toast position-absolute top-0 end-0 p-3"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto" id="toastHeader">Social/app</strong>
+        <small id="toastTime"></small>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="toastBody">Hi!</div>
+    </div>
+    <div class="container mt-3 mb-5">
+      <div class="row mb-5">
+        <div class="col-12">
+          <span class="fs-3 logo">Social/app</span>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-3">
+      <div class="col-12">
+        <h1>Join the conversation</h1>
+      </div>
+    </div>
+    <div class="hero py-3">
+      <div class="container">
+        <div class="row py-3">
+          <div class="col-lg-6">
+            <p class="fs-6 mb-4 w-75">
+              Sign in with you e-mail to learn and keep up with the latest and
+              greatest in the world of coding.
+            </p>
+            <form id="login_form" name="login" class="needs-validation mt-5">
+              <div
+                id="loginAlert"
+                class="alert alert-warning d-none"
+                role="alert"
+              ></div>
+              <div class="has-validation mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input
+                  type="email"
+                  class="form-control mb-3"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                />
+                <div class="invalid-feedback">
+                  Please enter a valid noroff.no or stud.noroff.no e-mail.
+                </div>
+              </div>
+
+              <div class="has-validation mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control mb-3"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <div class="invalid-feedback">Please enter your password.</div>
+              </div>
+              <div id="loginFeedback" class="invalid-feedback"></div>
+
+              <div class="row mt-5">
+                <div class="col-sm-3 mb-3">
+                  <button type="submit" class="btn w-100 btn-primary">
+                    Sign in
+                  </button>
+                </div>
+                <div class="col-sm-5">
+                  <a class="btn w-100 btn-outline-secondary" href="/register"
+                    >Create an account</a
+                  >
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-6 position-relative hero__img-container">
+            <img
+              class="position-absolute bg-dark d-none d-lg-block w-100 rounded"
+              src="./assets/images/hero/hero-img.jpg"
+              alt="Woman working on a computer"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="container mt-5 py-5">
+      <p>
+        Social/app is a social media platform for developers to share their
+        knowledge and connect with other developers.<br />
+        <strong
+          >This site is part of a school project and is only for demonstration
+          purposes.</strong
+        >
+      </p>
+      <p>&copy; 2023 - kimrune.dev</p>
+    </footer>
+  </body>
+</html>

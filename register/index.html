@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A social network for developers" />
+    <title>Register | Social/app</title>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <script src="../js/main.js?v=1" type="module" defer></script>
+  </head>
+  <body class="position-relative">
+    <div
+      id="toast"
+      class="toast position-absolute top-0 end-0 p-3"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto" id="toastHeader">Social/app</strong>
+        <small id="toastTime"></small>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="toastBody">Hi!</div>
+    </div>
+    <div class="container mt-3 mb-5">
+      <div class="row mb-5">
+        <div class="col-12">
+          <a class="link" href="/"><span class="fs-3 logo">Social/app</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-3">
+      <div class="col-12">
+        <h1>Join the conversation</h1>
+      </div>
+    </div>
+    <div class="hero py-3">
+      <div class="container">
+        <div class="row py-3">
+          <div id="register_col" class="col-lg-6">
+            <p class="fs-6 mb-4 w-75">
+              Register a new account to learn and keep up with the latest and
+              greatest in the world of coding.
+            </p>
+            <form
+              id="register_form"
+              name="register"
+              class="needs-validation mt-5"
+            >
+              <div class="has-validation mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control mb-3"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  maxlength="20"
+                />
+                <div class="invalid-feedback">
+                  Please enter your name. Maximum 20 characters.
+                </div>
+              </div>
+
+              <div class="has-validation mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input
+                  type="email"
+                  class="form-control mb-3"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                />
+                <div class="invalid-feedback">
+                  Please enter your e-mail (username)
+                </div>
+              </div>
+
+              <div class="has-validation mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control mb-3"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <div class="invalid-feedback">
+                  Please enter your password (min 8 characters)
+                </div>
+              </div>
+
+              <div class="has-validation mb-3">
+                <label for="confirm_password" class="form-label"
+                  >Confirm password</label
+                >
+                <input
+                  type="password"
+                  class="form-control mb-3"
+                  id="confirm_password"
+                  name="confirm_password"
+                  placeholder="Confirm password"
+                />
+                <div class="invalid-feedback">
+                  Confirmed password does not match given password
+                </div>
+              </div>
+
+              <div class="row mt-5">
+                <div class="col-sm-3 mb-3">
+                  <button type="submit" class="btn w-100 btn-primary">
+                    Register
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-6">
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="container mt-5 py-5">
+      <p>
+        Social/app is a social media platform for developers to share their
+        knowledge and connect with other developers.<br />
+        <strong
+          >This site is part of a school project and is only for demonstration
+          purposes.</strong
+        >
+      </p>
+      <p>&copy; 2023 - kimrune.dev</p>
+    </footer>
+  </body>
+</html>

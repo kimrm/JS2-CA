@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A social network for developers" />
+    <title>Feed | Social/app</title>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <script src="../js/main.js" type="module"></script>
+  </head>
+  <body class="position-relative">
+    <div
+      id="toast"
+      class="toast position-fixed bottom-0 end-0 p-3 z-index-5"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto" id="toastHeader">Social/app</strong>
+        <small id="toastTime"></small>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="toastBody">Hi!</div>
+    </div>
+    <app-navbar active-link="feed"></app-navbar>
+    <main>
+      <div id="createPostContainer" class="container mt-4"></div>
+
+      <div class="container mt-5 mb-2">
+        <input
+          type="radio"
+          class="btn-check"
+          name="sort-check"
+          id="checkNewest"
+          autocomplete="off"
+          value="newest"
+          checked
+        />
+        <label class="btn btn-outline-tertiary" for="checkNewest"
+          ><i class="bi bi-calendar2-range"></i> Newest
+        </label>
+        <input
+          type="radio"
+          class="btn-check"
+          name="sort-check"
+          id="checkFollowing"
+          autocomplete="off"
+          value="following"
+        />
+        <label class="btn btn-outline-tertiary" for="checkFollowing"
+          ><i class="bi bi-heart"></i> Following
+        </label>
+        <input
+          type="radio"
+          class="btn-check"
+          name="sort-check"
+          id="checkActive"
+          autocomplete="off"
+          value="active"
+        />
+        <label class="btn btn-outline-tertiary" for="checkActive"
+          ><i class="bi bi-broadcast"></i> Active</label
+        >
+      </div>
+
+      <div id="posts" class="container">
+        <!-- -->
+      </div>
+      <div id="feedLoader" class="d-flex justify-content-center p-4">
+        <div
+          id="feedLoaderSpinner"
+          class="spinner-grow text-primary"
+          role="status"
+        ></div>
+        <span id="feedLoaderText" class="p-2">Loading posts...</span>
+      </div>
+    </main>
+  </body>
+</html>

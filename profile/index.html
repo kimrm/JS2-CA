@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Social/app</title>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+    <meta name="description" content="A social network for developers" />
+    <script src="../js/main.js" type="module"></script>
+  </head>
+  <body>
+    <div
+      id="toast"
+      class="toast position-fixed bottom-0 end-0 p-3 z-index-5"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <strong class="me-auto" id="toastHeader">Social/app</strong>
+        <small id="toastTime"></small>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="toastBody">Hi!</div>
+    </div>
+    <app-navbar active-link="profile"></app-navbar>
+    <main>
+      <div class="container profile-banner position-relative mt-4">
+        <img
+          class="w-100 h-100 object-fit-cover rounded top-0 left-0 z-0 fadeable"
+          alt=""
+          id="profile-banner"
+        />
+        <h1
+          id="profile-name"
+          class="display-5 position-absolute z-1 top-0 m-2 text-light shadow bg-dark p-2 rounded fadeable"
+        ></h1>
+      </div>
+      <div class="container mt-3">
+        <div class="col p-3">
+          <div class="d-flex mb-1">
+            <div class="profile-icon-container">
+              <img
+                class="object-fit-cover rounded w-100 h-100 fadeable"
+                id="profile-picture"
+              />
+            </div>
+            <div class="px-3">
+              <strong class="h2" id="profile-picture-name"></strong>
+            </div>
+          </div>
+        </div>
+        <p class="d-inline-flex gap-3">
+          <a
+            id="editProfileButton"
+            class="btn btn-outline-primary d-none mt-3"
+            data-bs-toggle="collapse"
+            href="#collapseForm"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseForm"
+          >
+            Edit profile
+          </a>
+        </p>
+
+        <div class="collapse" id="collapseForm">
+          <div class="card card-body">
+            <form id="profile-edit-form" action="">
+              <div class="row">
+                <div class="col-sm-4">
+                  <div>Profile picture:</div>
+                  <img
+                    class="image-fluid w-100"
+                    alt=""
+                    id="profile-edit-avatar-preview"
+                  />
+                </div>
+                <div class="my-3">
+                  <label for="profile-edit-avatar">Your avatar</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="profile-edit-avatar"
+                    name="avatar"
+                  />
+                </div>
+                <div>Banner picture:</div>
+                <img
+                  class="image-fluid w-100"
+                  alt=""
+                  id="profile-edit-banner-preview"
+                />
+
+                <div class="my-3">
+                  <label for="profile-edit-avatar">Your banner</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="profile-edit-banner"
+                    name="banner"
+                  />
+                </div>
+              </div>
+              <div class="my-5">
+                <button class="btn btn-primary">Submit changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="posts-container" class="container">
+          <!-- -->
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
